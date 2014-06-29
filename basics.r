@@ -40,8 +40,14 @@ setwd('')           # set working directory (use forwar '/' slashes)
 statesInfo <- read.csv('data.csv')          # read data from data.csv
 
 subset(statesInfo, state.region == 1)       # get subset of data, where region == 1
+
+subset(statesInfo, !is.na(gender))          # get subset of data, where present the value of gender row
+
 statesInfo[statesInfo$state.region = 1,]    # the same
 
+table(reddit$gender)                        # table
+
+by(reddit$friend_count, reddit$gender, summary)
 ### R markdown
 # You can use markdown with R. The extension of the file will be .Rmd
 ```{r}
@@ -61,3 +67,7 @@ library(ggplot2)                            # load package
 
 # plot the histogramm
 qplot(data = reddit, x = age.range)
+
+# plot a splitted histogram with a binwidth, breaks and scale x a axis:
+qplot(x = age.range, data = reddit, binwidth = 25) + 
+    scale_x_continious(limit = c(0, 1000) breaks = seq(0, 1000, 50)) +    facet_wrap(~gender) 
