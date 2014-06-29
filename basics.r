@@ -70,4 +70,5 @@ qplot(data = reddit, x = age.range)
 
 # plot a splitted histogram with a binwidth, breaks and scale x a axis:
 qplot(x = age.range, data = reddit, binwidth = 25) + 
-    scale_x_continious(limit = c(0, 1000) breaks = seq(0, 1000, 50)) +    facet_wrap(~gender) 
+    scale_x_continious(limit = c(0, 1000) breaks = seq(0, 1000, 50)) + 
+    facet_wrap(~gender)
