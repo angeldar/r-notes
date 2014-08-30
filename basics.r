@@ -37,7 +37,7 @@ mtcars$mpg
 getwd()             # get working directory
 setwd('')           # set working directory (use forwar '/' slashes)
 
-statesInfo <- read.csv('data.csv')          # read data from data.csv
+statesInfo <- read.csv('data.csv', sep='\t')          # read data from data.csv
 
 subset(statesInfo, state.region == 1)       # get subset of data, where region == 1
 
@@ -51,7 +51,7 @@ by(reddit$friend_count, reddit$gender, summary)
 ### R markdown
 # You can use markdown with R. The extension of the file will be .Rmd
 ```{r}
-summary(mtcars) # summary - get basi info. Min, max, median and quantiles about each column.
+summary(mtcars) # summary - get basic info. Min, max, median and quantiles about each column.
 ```
 
 # ifelse construction
@@ -60,6 +60,7 @@ mtcars$weight_class <- ifelse(cond, 'light', 'average')
 
 # Libraries
 # ggplot2 - library to plot graphs.
+# gridExtra - library to plot complex grids of graphs.
 
 # installation
 install.packages('ggplot2')                 # install package
@@ -72,3 +73,13 @@ qplot(data = reddit, x = age.range)
 qplot(x = age.range, data = reddit, binwidth = 25) + 
     scale_x_continious(limit = c(0, 1000) breaks = seq(0, 1000, 50)) + 
     facet_wrap(~gender)
+
+# plot many graphs in a grid
+library(gridExtra)
+# Define individual plots
+p1 = qplot(...)
+p2 = qplot(...)
+p3 = qplot(...)
+p4 = qplot(...)
+# Arrange plots in grid
+grid(p1, p2, p3, p4, ncol = 2)
