@@ -83,3 +83,22 @@ p3 = qplot(...)
 p4 = qplot(...)
 # Arrange plots in grid
 grid(p1, p2, p3, p4, ncol = 2)
+
+# Independence tests
+# p-value is the probability of columns and rows are independent.
+
+# Chi-square test
+chisq.test(table)
+
+# Fisher's test
+fisher.test(table)
+
+# Chochran-Mantel-Haenszel test
+mantelhaen.test(table)
+
+# Correlations
+# x - data, use - specifies the handling of missing data,
+# method - pearson(default) | spearman | kendall
+
+cor(x, use= , method=)
+cor(x, y) # x and y are vectors
