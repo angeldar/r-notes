@@ -1,4 +1,4 @@
-## Data cleaning with R
+## Getting and cleaning data with R
 ## From coursera Getting and Cleaning Data course
 
 ## Get working directory
