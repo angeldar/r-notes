@@ -49,3 +49,24 @@ names(jsonData$owner)
 myjson <- toJSON(data, pretty = TRUE)
 cat(myjson)
 head(jsonData)
+
+## Reading data from the web
+con = url('http://website.com/article')
+htmlCode = readLines(con)
+close(con)
+htmlCode
+
+library(httr); html2 = GET(url)
+content2 = content(html2, as='text')
+parsedHtml = htmlParse(content2, asText=TRUE)
+xpathSApply(parsedHtml, '//title', xmlValue)
+
+pg2 = GET('http://website.com/login', authenticate('user', 'passwd'))
+
+google = handle('http://google.com')
+pg3 = GET(handle=google, path='/')
+
+## Reading data from APIs
+myapp = oauth_app('twitter', key='consumerKey', secret='consumerSecret')
+sig = sign_oauth1.0(myapp, token='token', token_secret='token_secret')
+homeTL = GET('https://api.twitter.com/1.1/statuses/home_timeline.json', sig)
